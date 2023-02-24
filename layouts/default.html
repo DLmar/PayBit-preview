@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                screens:{
+                    'lg':'1100px',
+                    'md':'768px',
+                    'sm':'640px',
+                },
+                container:{
+                    center:true,
+                    padding:'12px'
+                },
+                fontSize:{
+                    xs: ['12px', '16.56px'],
+                    sm: ['14px', '19.32px'],
+                    base: ['16px', '22.08px'],
+                    lg: ['18px', '24.84px'],
+                    '2xl': ['24px', '30px'],
+                    '3xl':['32px', '40px'],
+                    '4xl':['36px', '45px'],
+                    '5xl':['48px', '60px'],
+                },
+                extend: {
+                    colors: {
+                        'accent_dark':'#17122B',
+                        'midnight':'#1F1B32',
+                        'evening':'#252339',
+                        'accent_evening':'#201A2F',
+                        'accent_white':'#F7F7F7',
+                        'accent_yellow':'#FFC700',
+                        'light_yellow':'#FBD849',
+                        'accent_gray':'#222222',
+                        'high_gray':'#2F2F2F',
+                        'mid_gray':'#666666',
+                        'light_gray':'#BBBBBB',
+                        'gray_white':'#EEEEEE',
+                        'silver_white':'#FDFDFD',
+                        'custom_white':'#F2F2F2'
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .transitionClass{
+                @apply transition-all duration-200 ease-in-out;
+            }
+        }
+    </style>
+</head>
+
+<body
+    x-data="{'darkMode': false}"
+    x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark': darkMode === true}">
+
+<header class="absolute inset-x-0 z-50 container flex justify-between items-center text-accent_gray pt-5 ">
+    <div class="flex items-center dark:text-white ">
+            <div class="dark:[&_svg_path]:fill-light_yellow dark:[&_svg_.center]:fill-white">
+                <img src="../content/icons/paybit_icon.svg" alt="icon">
+            </div>
+            <span class="text-2xl font-bold ml-2 mr-[15px]">PayBit</span>
+
+        <label for="toggle" class="relative block w-8 h-4 rounded-full cursor-pointer bg-accent_dark dark:bg-white mt-1">
+            <div class="absolute w-3 h-3 rounded-full -translate-y-1/2 top-1/2 left-1/2 dark:left-0.5 transitionClass bg-white dark:bg-accent_dark ">
+                <div class="absolute top-1/2 left-0 w-3 h-3 rounded-full -translate-x-1/3 -translate-y-1/2  bg-accent_dark dark:hidden"></div>
+            </div>
+        </label>
+        <input id="toggle" type="checkbox" class="hidden" :value="darkMode" @change="darkMode = !darkMode">
+    </div>
+
+    <nav class="flex items-center text-sm font-medium dark:text-white">
+        <p class="hidden sm:block mr-[50px]">About us</p>
+        <p class="mr-5">Login</p>
+        <p class="rounded-[5px] bg-accent_yellow dark:text-accent_gray dark:bg-light_yellow px-4 py-[7px]">
+            Register
+        </p>
+    </nav>
+</header>
+
+<main class="dark:bg-midnight text-sm lg:text-base text-mid_gray dark:text-light_gray">
+    <div class="relative h-[715px] lg:h-[800px] bg-neutral-50 dark:bg-accent_dark dark:text-white transitionClass">
+        <img src="../assets/images/B_left.png" alt="bitcoin image" class="absolute left-0 hidden lg:block">
+        <img src="../assets/images/B_top.png" alt="bitcoin image" class="absolute left-1/2 hidden lg:block">
+        <img src="../assets/images/B_right.png" alt="bitcoin image" class="absolute bottom-0 right-0 hidden lg:block">
+
+        <div class="container h-full flex flex-col items-center sm:flex-row sm:justify-between pt-[113px] sm:pt-0">
+            <div>
+                <h1 class="text-accent_gray dark:text-white font-medium text-3xl lg:text-5xl">
+                    <span class="text-accent_yellow dark:text-light_yellow">Manage</span> your
+                    <span class="text-accent_yellow dark:text-light_yellow">crypto</span><br> with confidence.
+                </h1>
+                <p class="text-base lg:text-lg mt-[15px]">Start your crypto journey with BitCity. Simple. Fast. Secure</p>
+            </div>
+            <img src="../assets/images/homepage/girl_notebook.png"
+                 class="h-[242px] lg:h-[351px] mt-[60px] md:mt-0" alt="girl with notebook">
+        </div>
+    </div>
+
+    <div class="relative container bottom-[60px] md:bottom-[100px] ">
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-px bg-gradient-to-t from-[rgba(45,_41,_63,_0)] via-custom_white dark:via-evening to-[rgba(45,_41,_63,_0)] border-2 border-custom_white dark:border-evening rounded-[25px] overflow-hidden">
+            <div class="text-center bg-silver_white dark:bg-midnight p-[30px] lg:pt-[50px] lg:pb-[70px]">
+                <p class="font-bold text-accent_gray dark:text-white text-2xl lg:text-4xl !leading-[60px]">100,000+</p>
+                <p>Happy Clients</p>
+            </div>
+
+            <div class="text-center bg-silver_white dark:bg-midnight p-[30px] lg:pt-[50px] lg:pb-[70px]">
+                <p class="font-bold text-accent_gray dark:text-white text-2xl lg:text-4xl !leading-[60px]">100+</p>
+                <p>Countries supported</p>
+            </div>
+
+            <div class="text-center bg-silver_white dark:bg-midnight p-[30px] lg:pt-[50px] lg:pb-[70px]">
+                <p class="font-bold text-accent_gray dark:text-white text-2xl lg:text-4xl !leading-[60px]">7M+</p>
+                <p>Transactions</p>
+            </div>
+
+            <div class="text-center bg-silver_white dark:bg-midnight p-[30px] lg:pt-[50px] lg:pb-[70px]">
+                <p class="font-bold text-accent_gray dark:text-white text-2xl lg:text-4xl !leading-[60px]">200+</p>
+                <p>Cryptocurrencies support</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container pb-[60px] sm:pb-[150px] transitionClass">
+        <h2 class="text-2xl lg:text-4xl text-center text-accent_gray dark:text-white">
+            Own your future. Build your <br class="sm:hidden"> crypto <br class="hidden sm:block"> portfolio today.
+        </h2>
+        <h4 class="text-center mt-5">
+            Whether you have experience or just getting <br class="sm:hidden"> started,<br class="hidden sm:block"> BitCity has all the tools you need
+        </h4>
+        <div class="flex flex-col items-center md:flex-row md:justify-between gap-[50px] mt-[75px]">
+            <img src="../assets/images/homepage/monet.png" alt="golden bitcoin" class="w-[303px] h-[182px] lg:w-[416px] lg:h-[250px]">
+            <div class="sm:w-[526px]">
+                <h4 class="text-base lg:text-lg text-accent_gray dark:text-white">
+                    Execute your crypto strategies with the <br>professional level platform
+                </h4>
+                <div class="flex flex-col gap-y-[15px] lg:gap-y-5 mt-[30px]">
+                    <div class="flex gap-x-5">
+                        <div class="dark:[&_svg_path]:fill-light_yellow">
+                            <img src="../content/icons/B.svg" alt="" class="w-[19px] h-[19px] sm:w-[25px] sm:h-[25px]">
+                        </div>
+                        <p>Exchange and send crypto in minutes</p>
+                    </div>
+                    <div class="flex gap-x-5">
+                        <div class="dark:[&_svg_path]:fill-light_yellow">
+                            <img src="../content/icons/euro.svg" alt="" class="w-[19px] h-[19px] sm:w-[25px] sm:h-[25px]">
+                        </div>
+                        <p>Keep fiat and cryptocurrencies together in one wallet</p>
+                    </div>
+                    <div class="flex gap-x-5">
+                        <div class="dark:[&_svg_path]:fill-light_yellow">
+                            <img src="../content/icons/lock.svg" alt="" class="w-[19px] h-[19px] sm:w-[25px] sm:h-[25px]">
+                        </div>
+                        <p>Say goodbye to complicated setups, manual private keys and seed phrases</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-neutral-50 dark:bg-accent_dark py-[60px] sm:py-[100px] transitionClass">
+        <h2 class="text-center text-accent_gray dark:text-white text-2xl lg:text-4xl ">Unique Solutions for Your<br class="sm:hidden"> Business</h2>
+        <div class="container flex flex-col items-center md:flex-row md:justify-between mt-[51.83px] md:mt-[75px]">
+            <div class="sm:w-[636px] flex flex-col justify-center gap-y-[52.5px]">
+                <div class="flex flex-col gap-y-[22.5px]">
+                    <h4 class="flex text-accent_gray dark:text-white gap-x-[17.5px] text-base font-medium lg:text-lg">
+                    <span class="dark:[&_svg_.back]:fill-light_yellow">
+                        <img src="../content/icons/check.svg" class="w-[22px] h-[22px] sm:w-[25px] sm:h-[25px]" alt="">
+                    </span>
+                        <span>Hosted wallets</span>
+                    </h4>
+                    <p class="md:w-3/4">
+                        When you keep crypto with BitCity, it is automatically held in a hosted wallet. It`s
+                        called hosted as a third party keeps your crypto coins for you, similar to how a
+                        bank keeps your funds in a savings or checking account. The main benefit is
+                        safety. You may have heard of people "losing their keys" or "losing their USB wallet"
+                        but with a hosted wallet you don`t have to worry about any of that.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-y-[22.5px]">
+                    <h4 class="flex text-accent_gray dark:text-white gap-x-[17.5px] text-base font-medium lg:text-lg">
+                        <span class="dark:[&_svg_.back]:fill-light_yellow">
+                            <img src="../content/icons/check.svg" class="w-[22px] h-[22px] sm:w-[25px] sm:h-[25px]" alt="">
+                        </span>
+                        <span>Compliance and security</span>
+                    </h4>
+                    <p class="md:w-3/4">
+                        When you keep crypto with BitCity, it is automatically held in a hosted wallet. It`s
+                        called hosted as a third party keeps your crypto coins for you, similar to how a
+                        bank keeps your funds in a savings or checking account. The main benefit is
+                        safety. You may have heard of people "losing their keys" or "losing their USB wallet"
+                        but with a hosted wallet you don`t have to worry about any of that.
+                    </p>
+                </div>
+            </div>
+            <img src="../assets/images/homepage/man_notebook.png" alt="man with notebook" class="h-[257px] sm:h-[518px] mt-[50px] md:mt-0">
+        </div>
+    </div>
+
+    <div class="container py-[60px] sm:py-[100px] transitionClass">
+        <h2 class="text-center text-accent_gray dark:text-white font-medium text-2xl lg:text-4xl">Why BitCity?</h2>
+        <p class="lg:w-[775px] text-center mt-5 mx-auto">
+            BitCity is a guide to the crypto world created to simplify crypto specifics and make access to coins easier.
+            BitCity includes dedicated wallets for 100+ popular cryptocurrencies available on a Multi-currency wallet app with a web interface.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-6 mt-[50px] md:mt-[75px]">
+            <div class="bg-neutral-50 dark:bg-evening rounded-[20px]">
+                <div class="p-[30px]">
+                    <span class="dark:[&_svg_path]:fill-light_yellow">
+                       <img src="../content/icons/euro.svg" class="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" alt="">
+                    </span>
+                    <h4 class="text-accent_gray dark:text-white font-medium text-base lg:text-lg mt-[15px]">Compliance and security</h4>
+                    <p class="mt-[5px]">Complete your account and purchase in minutes</p>
+                </div>
+            </div>
+            <div class="bg-neutral-50 dark:bg-evening rounded-[20px]">
+                <div class="p-[30px]">
+                    <span class="dark:[&_svg_path]:fill-light_yellow">
+                        <img src="../content/icons/euro.svg" class="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" alt="">
+                    </span>
+                    <h4 class="text-accent_gray dark:text-white font-medium text-base lg:text-lg mt-[15px]">Service</h4>
+                    <p class="mt-[5px]">We value your trust above all</p>
+                </div>
+            </div>
+            <div class="bg-neutral-50 dark:bg-evening rounded-[20px]">
+                <div class="p-[30px]">
+                    <span class="dark:[&_svg_path]:fill-light_yellow">
+                        <img src="../content/icons/euro.svg" class="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" alt="">
+                    </span>
+                    <h4 class="text-accent_gray dark:text-white font-medium text-base lg:text-lg mt-[15px]">Industry-leading security</h4>
+                    <p class="mt-[5px]">Strictest security standarts keep your data and money safe</p>
+                </div>
+            </div>
+            <div class="bg-neutral-50 dark:bg-evening rounded-[20px]">
+                <div class="p-[30px]">
+                    <span class="dark:[&_svg_path]:fill-light_yellow">
+                        <img src="../content/icons/euro.svg" class="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" alt="">
+                    </span>
+                    <h4 class="text-accent_gray dark:text-white font-medium text-base lg:text-lg mt-[15px] ">Simplicity</h4>
+                    <p class="mt-[5px]">With intuitive interface you`ll feel like an expert</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-neutral-50 dark:bg-accent_dark transitionClass">
+        <div class="container flex flex-col items-center py-[60px] sm:py-[100px]">
+            <h2 class="text-center text-accent_gray dark:text-white text-2xl lg:text-4xl">We are here 24/7 to help you</h2>
+            <p class="mt-[20px]">We answer any question you might have</p>
+            <button class="w-[108px] h-[43px] rounded-[5px] bg-accent_yellow dark:bg-light_yellow font-medium text-accent_gray text-lg mt-[30px]">
+                Support
+            </button>
+            <img src="../assets/images/homepage/girl_man_notebook.png" alt="girl and man with notebook"
+                 class="h-[220px] mt-[50px]">
+        </div>
+    </div>
+
+</main>
+<footer class="flex justify-center bg-neutral-100 dark:bg-accent_evening h-[412px] md:h-[265px] text-sm text-mid_gray dark:text-light_gray">
+    <div class="container flex flex-col md:flex-row md:justify-between">
+        <div class="mt-[34px] md:mt-[50px]">
+            <div class="flex items-center">
+                <div class="dark:[&_svg_path]:fill-light_yellow dark:[&_svg_.center]:fill-white">
+                    <img src="../content/icons/paybit_icon.svg" alt="icon">
+                </div>
+                <span class="text-2xl font-bold text-accent_gray dark:text-white ml-2">PayBit</span>
+            </div>
+
+            <h4 class="font-medium text-base lg:text-lg mt-[5px] md:mt-[20px] text-accent_gray dark:text-white">Buy crypto with us today</h4>
+            <p class="flex flex-col lg:text-[base] mt-[5px]">High level experience in crypto and development <br>knowledge,producing quality work.</p>
+            <p class="hidden md:block text-xs lg:text-sm mt-[15px]">℗ Copyright 2023 BitCity. All Rights Reserved.</p>
+
+        </div>
+        <div class="flex mt-[30px] md:mt-[50px]">
+            <div class=" flex flex-col gap-y-[10px] mr-[97px] md:mr-[78px]">
+                <h4 class="font-medium text-base lg:text-lg text-accent_gray dark:text-white">Company</h4>
+                <p class="flex flex-col lg:text-base gap-y-[5px]">
+                    <a href="#">About Us</a>
+                    <a href="#">Support</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Cookie Policy</a>
+                </p>
+            </div>
+            <div class="flex flex-col gap-y-[10px]">
+                <h4 class="font-medium text-base lg:text-lg text-accent_gray dark:text-white">My account</h4>
+                <p class="flex flex-col lg:text-base gap-y-[5px]">
+                    <a href="#">Sign IN</a>
+                    <a href="#">Sign UP</a>
+                </p>
+            </div>
+        </div>
+        <p class="md:hidden text-xs lg:text-sm mt-[30px]">℗ Copyright 2023 BitCity. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
